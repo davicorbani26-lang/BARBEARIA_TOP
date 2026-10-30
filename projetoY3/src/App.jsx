@@ -1,24 +1,50 @@
+
+import { useState } from "react";
+
+import NovoAgendamento from "./components/NovoAgendamento";
+import Cabecalho from "./components/Cabecalho";
+import StatusLoja from "./components/StatusLoja";
+
 function App() {
+  const [agendamento, setAgendamento] = useState([]);
 
-const clientes = 0
-const aberto_fechado = true 
+  function salvarAgendamento(dados) {
+    const novoAgendamento = {
+      id: Date.now(),
+      nome: dados.nome,
+      telefone: dados.telefone,
+    };
 
-  return(
-    <div className="flex h-screen justify-center items-center">
-      <div className="card w-[80%] lg:w-[50%] h-[70%] shadow-md rounded-sm items-center p-10 gap-5">
-        <h1>
-          Barber 
-        </h1>
+    setAgendamento((prev) => [...prev, novoAgendamento]);
+  }
 
-      <p>{clientes === 0 ? "Nenhum cliente agendou ainda" : clientes + " clientes agendaram para hoje"}</p>
-      <p>{aberto_fechado === true  ? "A loja esta aberta" : "A loja esta fechada"}</p>
-      <Addagendamento/>
+  return (
+    <div className="flex min-h-screen justify-center items-center p-4">
+      <div className="card w-full lg:w-[50%] min-h-[70%] shadow-md rounded-sm items-center p-10 gap-5">
+
+        <Cabecalho />
+
+        <StatusLoja aberto={true} />
+
+        <NovoAgendamento
+          salvarAgendamento={salvarAgendamento}
+        />
+
+        <div className="w-full flex flex-col gap-2">
+          {agendamento.map((item) => (
+            <div
+              key={item.id}
+              className="bg-base-200 rounded p-3"
+            >
+              <p className="font-bold">{item.nome}</p>
+              <p>{item.telefone}</p>
+            </div>
+          ))}
+        </div>
 
       </div>
     </div>
-  ) 
+  );
 }
 
-export default App
-
-
+export default App;
