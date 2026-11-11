@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NovoAgendamento from "./components/NovoAgendamento";
 import Cabecalho from "./components/Cabecalho";
-import StatusLoja from "./components/Statusloja";
+import StatusLoja from "./components/StatusLoja";
 import AgendamentoCard from "./components/AgendamentoCard";
 
 
@@ -46,7 +46,7 @@ function App() {
           ))}
         </div>
 
-        <AgendamentoCard/>
+        
 
       </div>
     </div>
