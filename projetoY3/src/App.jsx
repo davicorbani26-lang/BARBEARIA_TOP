@@ -4,9 +4,10 @@ import { useState } from "react";
 import NovoAgendamento from "./components/NovoAgendamento";
 import Cabecalho from "./components/Cabecalho";
 import StatusLoja from "./components/StatusLoja";
+import AgendamentoCard from "./AgendamentoCard";
 
 function App() {
-  const [agendamento, setAgendamento] = useState([]);
+  const [agendamentos, setAgendamentos] = useState([]);
 
   function salvarAgendamento(dados) {
     const novoAgendamento = {
@@ -15,7 +16,7 @@ function App() {
       telefone: dados.telefone,
     };
 
-    setAgendamento((prev) => [...prev, novoAgendamento]);
+    setAgendamentos((prev) => [...prev, novoAgendamento]);
   }
 
   return (
@@ -41,6 +42,8 @@ function App() {
             </div>
           ))}
         </div>
+
+        <AgendamentoCard/>
 
       </div>
     </div>
