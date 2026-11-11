@@ -1,12 +1,38 @@
-function AgendamentoCard(){
-    return(
-        <div className="flex gap-4 w-full justify-between items-center">
-            <input placeholder="nome" className="input input-sm rounded full w-[70%]" />
-            <button>
-                +
-            </button>
-        </div>
-    )
+import servicos from "./data/servicos"
+
+function AgendamentoCard({ agendamento }) {
+
+  const servicoEncontrado = servicos.find(
+    (item) => item.nome === agendamento.servico
+  )
+
+  if (!servicoEncontrado) {
+    return <p>Serviço não encontrado</p>
+  }
+
+  const precoFormatado = servicoEncontrado.preco.toLocaleString(
+    "pt-BR",
+    {
+      style: "currency",
+      currency: "BRL"
+    }
+  )
+
+  const dataFormatada = new Date(
+    agendamento.data + "T00:00:00"
+  ).toLocaleDateString("pt-BR")
+
+  return (
+    <div className="card bg-base-200 p-4 flex flex-col gap-1 w-full">
+      <h2>{agendamento.nome}</h2>
+      <p>Telefone: {agendamento.telefone}</p>
+      <p>Serviço: {agendamento.servico}</p>
+      <p>Preço: {precoFormatado}</p>
+      <p>Duração: {servicoEncontrado.duracao} min</p>
+      <p>Data: {dataFormatada}</p>
+      <p>Horário: {agendamento.horario}</p>
+    </div>
+  )
 }
 
-export default AgendamentoCard
+export default AgendamentoCard;

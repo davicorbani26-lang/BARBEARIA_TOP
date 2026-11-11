@@ -1,12 +1,12 @@
 import { useState } from "react";
 import NovoAgendamento from "./components/NovoAgendamento";
 import Cabecalho from "./components/Cabecalho";
-import StatusLoja from "./components/statusloja";
+import StatusLoja from "./components/Statusloja";
 import AgendamentoCard from "./components/AgendamentoCard";
 
 
 function App() {
-  const [agendamento, setAgendamento] = useState([]);
+  const [agendamentos, setAgendamentos] = useState([]);                        
 
   function salvarAgendamento(dados) {
     const novoAgendamento = {
@@ -14,7 +14,7 @@ function App() {
       id: Date.now()
     };
 
-    setAgendamento((prev) => [...prev, novoAgendamento]);
+    setAgendamentos((prev) => [...prev, novoAgendamento]);
   }
 
   return (
@@ -30,21 +30,23 @@ function App() {
         />
 
         <p className="font-bold">
-          {agendamento.length} agendamento(s)
+          {agendamentos.length} agendamento(s)
         </p>
 
-        {agendamento.length === 0 && (
+        {agendamentos.length === 0 && (
           <p className="opacity-60">Nenhum agendamento</p>
         )}
 
         <div className="w-full flex flex-col gap-2">
-          {agendamento.map((item) => (
+          {agendamentos.map((item) => (
             <AgendamentoCard
               key={item.id}
-              agendamentos={item}
+              agendamento={item}
             />
           ))}
         </div>
+
+        <AgendamentoCard/>
 
       </div>
     </div>

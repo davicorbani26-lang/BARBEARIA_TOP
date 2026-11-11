@@ -1,7 +1,7 @@
 import { useState } from "react";
 import servicos from "./data/servicos";
 
-const horários = [
+const horarios = [
   "09:00", "11:00", "13:00", "15:00", "16:00"
 ];
 
@@ -10,10 +10,10 @@ function NovoAgendamento({ salvarAgendamento }) {
   const [telefone, setTelefone] = useState("");
   const [servico, setServico] = useState(servicos[0].nome);
   const [data, setData] = useState("");
-  const [horário, setHorario] = useState("");
+  const [horario, setHorario] = useState("");
 
   function agendar() {
-    if (!nome.trim() || !telefone.trim() || !data || !horário) {
+    if (!nome.trim() || !telefone.trim() || !data || !horario) {
       alert("Preencha todos os campos!");
       return;
     }
@@ -23,7 +23,7 @@ function NovoAgendamento({ salvarAgendamento }) {
       telefone: telefone.trim(),
       servico: servico,
       data: data,
-      horário: horário,
+      horario: horario,
     });
 
     setNome("");
@@ -59,12 +59,12 @@ function NovoAgendamento({ salvarAgendamento }) {
       />
 
       <div className="flex flex-wrap gap-2">
-        {horários.map((h) => (
+        {horarios.map((h) => (
           <button
             key={h}
             type="button"
             className={
-              horário === h
+              horario === h
                 ? "btn btn-sm btn-primary"
                 : "btn btn-sm btn-outline"
             }
