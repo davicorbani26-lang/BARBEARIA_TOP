@@ -1,0 +1,23 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* cores e fontes do site: viram classes como bg-azul, text-vermelho e font-titulo */
+@theme {
+  --color-azul: #1E56A0;
+  --color-vermelho: #E3121B;
+  --color-creme: #F5F1EA;
+  --font-titulo: "Oswald", sans-serif;
+  --font-texto: "Inter", sans-serif;
+}
+
+/* faixa listrada do topo, como o poste de barbearia */
+.faixa-barbearia {
+  height: 14px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #E3121B 0 14px,
+    #F5F1EA 14px 28px,
+    #1E56A0 28px 42px,
+    #F5F1EA 42px 56px
+  );
+}
